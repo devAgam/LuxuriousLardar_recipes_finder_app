@@ -1,0 +1,57 @@
+%btn {
+  background-image: $gradient;
+  border-radius: 10rem;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:focus {
+    outline: none;
+  }
+
+  & > *:first-child {
+    margin-right: 1rem;
+  }
+}
+
+.btn {
+  @extend %btn;
+  padding: 1.5rem 4rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  gap: 1.5rem;
+  svg {
+    height: 2.25rem;
+    width: 2.25rem;
+    fill: currentColor;
+  }
+}
+
+.message {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 5rem 4rem;
+  display: flex;
+
+  svg {
+    height: 3rem;
+    width: 3rem;
+    fill: $color-gradient-2;
+    transform: translateY(-0.3rem);
+  }
+
+  p {
+    margin-left: 1.5rem;
+    font-size: 1.8rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+    color: $color-light-grey;
+  }
+}

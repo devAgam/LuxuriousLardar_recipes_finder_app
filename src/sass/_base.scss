@@ -1,3 +1,7 @@
+$color-dark-grey: #212529;
+$color-light-grey: #adb5bd;
+$color-white: #fff;
+
 $color-gradient-1: #111;
 $color-gradient-2: #c89116;
 $gradient: linear-gradient(
@@ -32,11 +36,16 @@ body {
 }
 
 .container {
-  max-width: 120rem;
-  min-height: 117rem;
+  max-width: 160rem;
+  min-height: 140rem;
   margin: 4vw auto;
-  background-color: #fff;
+  background-color: $color-white;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2rem 6rem 0.5rem rgba(#000, 0.3);
+
+  display: grid;
+  grid-template-rows: 12rem minmax(100rem, auto);
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: "head head" "list recipe";
 }
