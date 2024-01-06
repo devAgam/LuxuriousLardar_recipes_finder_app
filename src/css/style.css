@@ -196,6 +196,15 @@ body {
     font-weight: 600;
     color: #212529; }
 
+.spinner {
+  margin: 5rem auto;
+  text-align: center; }
+  .spinner svg {
+    height: 6rem;
+    width: 6rem;
+    fill: #c89116;
+    animation: rotate 2s infinite linear; }
+
 .preview__link:link, .preview__link:visited {
   display: flex;
   align-items: center;
@@ -209,7 +218,8 @@ body {
   transform: translateY(-2px); }
 
 .preview__link--active {
-  background-color: #adb5bd; }
+  background-color: #adb5bd;
+  height: 12rem; }
 
 .preview__fig {
   flex: 0 0 5.8rem;
@@ -320,3 +330,9 @@ body {
 
 .recipe {
   background-color: #212529; }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
