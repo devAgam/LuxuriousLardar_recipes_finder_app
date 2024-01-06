@@ -1,6 +1,10 @@
-$color-gradient-1: #000;
+$color-gradient-1: #111;
 $color-gradient-2: #c89116;
-$gradient: linear-gradient(to right bottom, #000, #c89116);
+$gradient: linear-gradient(
+  to right bottom,
+  $color-gradient-1,
+  $color-gradient-2
+);
 
 * {
   margin: 0;
@@ -31,4 +35,8 @@ body {
   max-width: 120rem;
   min-height: 117rem;
   margin: 4vw auto;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2rem 6rem 0.5rem rgba(#000, 0.3);
 }
