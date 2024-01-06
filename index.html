@@ -68,10 +68,10 @@
                     </p>
                   </div>
 
-                  <li class="preview">
+                  <!-- <li class="preview">
                     <a class="preview__link" href="#23456">
                       <figure class="preview__fig">
-                        <!-- <img src="src/img/test-1.jpg" alt="Test" /> -->
+                        <img src="src/img/test-1.jpg" alt="Test" />
                       </figure>
                       <div class="preview__data">
                         <h4 class="preview__name">
@@ -80,7 +80,7 @@
                         <p class="preview__publisher">The Pioneer Woman</p>
                       </div>
                     </a>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
             </li>
@@ -91,9 +91,59 @@
       <div class="search-results">
         <ul class="results"></ul>
 
-        <div class="pagination"></div>
-        <p class="copyright"></p>
+        <div class="pagination">
+          <button class="btn--inline pagination__btn--previous">
+            <svg class="search__icon">
+              <use href="src/img/icons.svg#icon-arrow-left"></use>
+            </svg>
+            <span>Page 1</span>
+          </button>
+          <button class="btn--inline pagination__btn--next">
+            <span>Page 3</span>
+            <svg class="search__icon">
+              <use href="src/img/icons.svg#icon-arrow-right"></use>
+            </svg>
+          </button>
+        </div>
+
+        <p class="copyright">&copy; Copyright by Mehtab Singh Jagde</p>
+        <div class="social--icon">
+          <div>
+            <a
+              class="social--icon-link"
+              target="_blank"
+              href="https://instagram.com/mehtab_jagdey"
+              ><ion-icon
+                class="social--icon-logo"
+                name="logo-instagram"></ion-icon
+            ></a>
+            <a
+              class="social--icon-link"
+              target="_blank"
+              href="https://github.com/MehtabSJ003"
+              ><ion-icon class="social--icon-logo" name="logo-github"></ion-icon
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="recipe">
+        <div class="message message--recipe">
+          <div>
+            <svg>
+              <use href="src/img/icons.svg#icon-smile"></use>
+            </svg>
+          </div>
+          <p>Start by searching for a recipe or an ingredient. Have fun!</p>
+        </div>
       </div>
     </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </body>
 </html>

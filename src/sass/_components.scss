@@ -34,6 +34,39 @@
   }
 }
 
+.btn--inline {
+  color: $color-gradient-2;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border: none;
+  background-color: $color-dark-grey;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10rem;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  svg {
+    height: 1.6rem;
+    width: 1.6rem;
+    fill: currentColor;
+    margin: 0 0.2rem;
+  }
+
+  span {
+    margin: 0 0.4rem;
+  }
+
+  &:hover {
+    background-color: rgba(#000, 0.9);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
 .message {
   max-width: 40rem;
   margin: 0 auto;
@@ -44,14 +77,20 @@
     height: 3rem;
     width: 3rem;
     fill: $color-gradient-2;
-    transform: translateY(-0.3rem);
+    transform: translateY(0.3rem);
   }
 
   p {
     margin-left: 1.5rem;
     font-size: 1.8rem;
-    line-height: 1.5rem;
+    line-height: 2rem;
     font-weight: 600;
+    color: $color-dark-grey;
+  }
+}
+
+.message--recipe {
+  p {
     color: $color-light-grey;
   }
 }

@@ -156,6 +156,29 @@ body {
     width: 2.25rem;
     fill: currentColor; }
 
+.btn--inline {
+  color: #c89116;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border: none;
+  background-color: #212529;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center; }
+  .btn--inline svg {
+    height: 1.6rem;
+    width: 1.6rem;
+    fill: currentColor;
+    margin: 0 0.2rem; }
+  .btn--inline span {
+    margin: 0 0.4rem; }
+  .btn--inline:hover {
+    background-color: rgba(0, 0, 0, 0.9); }
+  .btn--inline:focus {
+    outline: none; }
+
 .message {
   max-width: 40rem;
   margin: 0 auto;
@@ -165,10 +188,40 @@ body {
     height: 3rem;
     width: 3rem;
     fill: #c89116;
-    transform: translateY(-0.3rem); }
+    transform: translateY(0.3rem); }
   .message p {
     margin-left: 1.5rem;
     font-size: 1.8rem;
-    line-height: 1.5rem;
+    line-height: 2rem;
     font-weight: 600;
-    color: #adb5bd; }
+    color: #212529; }
+
+.message--recipe p {
+  color: #adb5bd; }
+
+.pagination {
+  margin-top: auto;
+  padding: 0 3.5rem;
+  display: flex;
+  justify-content: space-between; }
+
+.copyright {
+  margin-top: auto;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #212529; }
+
+.social--icon {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem; }
+  .social--icon-link:link, .social--icon-link:visited {
+    color: #212529; }
+  .social--icon-link:hover, .social--icon-link:active {
+    color: #c89116; }
+  .social--icon-logo {
+    height: 2rem;
+    width: 2rem; }
+
+.recipe {
+  background-color: #212529; }
