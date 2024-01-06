@@ -68,7 +68,7 @@
                     </p>
                   </div>
 
-                  <!-- <li class="preview">
+                  <li class="preview">
                     <a class="preview__link" href="#23456">
                       <figure class="preview__fig">
                         <img src="src/img/test-1.jpg" alt="Test" />
@@ -80,7 +80,7 @@
                         <p class="preview__publisher">The Pioneer Woman</p>
                       </div>
                     </a>
-                  </li> -->
+                  </li>
                 </ul>
               </div>
             </li>
@@ -89,7 +89,24 @@
       </header>
 
       <div class="search-results">
-        <ul class="results"></ul>
+        <ul class="results">
+          <li class="preview">
+            <a class="preview__link preview__link--active" href="#23456">
+              <figure class="preview__fig">
+                <!-- <img src="src/img/test-1.jpg" alt="Test" /> -->
+              </figure>
+              <div class="preview__data">
+                <h4 class="preview__title">Pasta with Tomato Cream ...</h4>
+                <p class="preview__publisher">The Pioneer Woman</p>
+                <div class="preview__user-generated">
+                  <svg>
+                    <use href="src/img/icons.svg#icon-user"></use>
+                  </svg>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
 
         <div class="pagination">
           <button class="btn--inline pagination__btn--previous">
@@ -106,9 +123,9 @@
           </button>
         </div>
 
-        <p class="copyright">&copy; Copyright by Mehtab Singh Jagde</p>
         <div class="social--icon">
-          <div>
+          <span class="copyright">&copy; Copyright by Mehtab Singh Jagde</span>
+          <div class="social--icon-container">
             <a
               class="social--icon-link"
               target="_blank"

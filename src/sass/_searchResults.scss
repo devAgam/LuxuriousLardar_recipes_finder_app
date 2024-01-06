@@ -1,3 +1,14 @@
+.search-results {
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.results {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
 .pagination {
   margin-top: auto;
   padding: 0 3.5rem;
@@ -6,6 +17,7 @@
   justify-content: space-between;
 }
 .copyright {
+  display: inline;
   margin-top: auto;
   text-align: center;
   font-size: 1.2rem;
@@ -14,8 +26,16 @@
 
 .social--icon {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 1rem;
+
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
   &-link {
     &:link,
