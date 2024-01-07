@@ -1,1 +1,3 @@
-## LuxuriousLardar_recipes_finder_app
+## Luxurious Lardar
+
+Search for over 1,000,000 recipes.
