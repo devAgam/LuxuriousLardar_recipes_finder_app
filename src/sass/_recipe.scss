@@ -110,4 +110,59 @@
       fill: $color-gradient-2;
     }
   }
+
+  &__ingredients {
+    padding: 5rem 8rem;
+    font-size: 1.6rem;
+    line-height: 1.4rem;
+    background-color: $color-light-grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__ingredient-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 3rem;
+    list-style: none;
+  }
+
+  &__ingredient {
+    display: flex;
+  }
+
+  &__icon {
+    height: 2rem;
+    width: 2rem;
+    fill: $color-gradient-2;
+    margin-right: 1.1rem;
+    flex: 0 0 auto;
+    margin-top: 0.1rem;
+  }
+
+  &__quantity {
+    margin-right: 0.5rem;
+    flex: 0 0 auto;
+  }
+
+  // // Recipe Directions
+  &__directions {
+    padding: 5rem 10rem;
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-text {
+      font-size: 1.7rem;
+      text-align: center;
+      margin-bottom: 3.5rem;
+      color: $color-light-grey;
+    }
+  }
+
+  &__publisher {
+    font-weight: 700;
+  }
 }
