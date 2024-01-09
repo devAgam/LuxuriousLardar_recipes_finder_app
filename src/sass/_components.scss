@@ -100,3 +100,59 @@
     animation: rotate 2s infinite linear;
   }
 }
+
+.btn--tiny {
+  height: 2.25rem;
+  width: 2.25rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  svg {
+    height: 100%;
+    width: 100%;
+    fill: $color-gradient-2;
+    transition: all 0.3s;
+
+    &:focus {
+      outline: none;
+    }
+  }
+  &:hover svg {
+    fill: $color-gradient-2;
+    transform: translateY(-1px);
+  }
+  &:active svg {
+    transform: translateY(0);
+  }
+  &:not(:last-child) {
+    margin-right: 0.3rem;
+  }
+}
+
+.btn--round {
+  height: 4.5rem;
+  width: 4.5rem;
+  background-color: $color-gradient-2;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: scale(1.07);
+  }
+  &:focus {
+    outline: none;
+  }
+
+  svg {
+    height: 2.5rem;
+    width: 2.5rem;
+    fill: $color-white;
+  }
+}
