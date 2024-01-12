@@ -45,7 +45,7 @@ body {
   box-shadow: 0 2rem 6rem 0.5rem rgba(#000, 0.3);
 
   display: grid;
-  grid-template-rows: 12rem minmax(100rem, auto);
+  grid-template-rows: 10rem minmax(100rem, auto);
   grid-template-columns: 1fr 2fr;
   grid-template-areas: "head head" "list recipe";
 }

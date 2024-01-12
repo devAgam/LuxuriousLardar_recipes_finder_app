@@ -25,7 +25,7 @@ body {
 .container {
   background-color: #fff;
   border-radius: 10px;
-  grid-template: "head head" 12rem
+  grid-template: "head head" 10rem
                  "list recipe" minmax(100rem, auto)
                  / 1fr 2fr;
   max-width: 160rem;
@@ -45,8 +45,8 @@ body {
 }
 
 .header__logo {
-  width: 10rem;
-  height: 10rem;
+  width: 8rem;
+  height: 8rem;
   margin-left: 4rem;
   display: block;
 }
@@ -55,7 +55,7 @@ body {
   background-color: #adb5bd;
   border-radius: 10rem;
   align-items: center;
-  height: 7rem;
+  height: 5.2rem;
   padding-left: 3rem;
   transition: all .3s;
   display: flex;
