@@ -528,7 +528,7 @@ body {
   opacity: 0; }
 
 .add-recipe-window {
-  background-color: #fff;
+  background-color: #212529;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -541,7 +541,7 @@ body {
   transition: all 0.5s; }
   .add-recipe-window .btn--close-modal {
     font-family: inherit;
-    color: inherit;
+    color: #c89116;
     position: absolute;
     top: 0.5rem;
     right: 1.6rem;
@@ -562,15 +562,16 @@ body {
     .upload__column label {
       font-size: 1.5rem;
       font-weight: 600;
-      color: inherit; }
+      color: #adb5bd; }
     .upload__column input {
       font-size: 1.5rem;
       padding: 0.8rem 1rem;
       border: 1px solid #ddd;
       border-radius: 0.5rem;
+      background-color: #adb5bd;
       transition: all 0.2s; }
       .upload__column input::placeholder {
-        color: #ddd; }
+        color: rgba(255, 255, 255, 0.4); }
       .upload__column input:focus {
         outline: none;
         border: 1px solid #c89116; }
@@ -579,6 +580,7 @@ body {
       justify-self: center;
       margin-top: 1rem; }
   .upload__heading {
+    color: #c89116;
     font-size: 2.25rem;
     font-weight: 700;
     text-transform: uppercase;

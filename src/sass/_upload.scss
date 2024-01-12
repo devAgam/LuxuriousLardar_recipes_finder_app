@@ -15,7 +15,7 @@
 }
 
 .add-recipe-window {
-  background-color: $color-white;
+  background-color: $color-dark-grey;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -29,7 +29,7 @@
 
   .btn--close-modal {
     font-family: inherit;
-    color: inherit;
+    color: $color-gradient-2;
     position: absolute;
     top: 0.5rem;
     right: 1.6rem;
@@ -54,7 +54,7 @@
     & label {
       font-size: 1.5rem;
       font-weight: 600;
-      color: inherit;
+      color: $color-light-grey;
     }
 
     & input {
@@ -62,10 +62,11 @@
       padding: 0.8rem 1rem;
       border: 1px solid #ddd;
       border-radius: 0.5rem;
+      background-color: $color-light-grey;
       transition: all 0.2s;
 
       &::placeholder {
-        color: #ddd;
+        color: rgba($color: #fff, $alpha: 0.4);
       }
 
       &:focus {
@@ -82,6 +83,7 @@
   }
 
   &__heading {
+    color: $color-gradient-2;
     font-size: 2.25rem;
     font-weight: 700;
     text-transform: uppercase;
