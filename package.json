@@ -1,14 +1,15 @@
 {
   "name": "luxuriouslardar_recipes_finder_app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Search for over 1,000,000 recipes.",
   "scripts": {
-    "compile:sass": "node-sass src/sass/main.scss src/css/style.css -w"
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "Mehtab Singh Jagde",
   "license": "ISC",
   "devDependencies": {
-    "node-sass": "^9.0.0"
+    "@parcel/transformer-sass": "^2.11.0",
+    "parcel": "^2.11.0"
   }
 }
