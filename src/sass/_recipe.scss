@@ -10,6 +10,7 @@
     height: 35rem;
     position: relative;
     transform-origin: top;
+    background-size: cover;
 
     &::before {
       content: "";

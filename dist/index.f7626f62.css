@@ -28,8 +28,8 @@ body {
   grid-template: "head head" 10rem
                  "list recipe" minmax(100rem, auto)
                  / 1fr 2fr;
-  max-width: 160rem;
-  min-height: 140rem;
+  max-width: 140rem;
+  min-height: 130rem;
   margin: 4vw auto;
   display: grid;
   overflow: hidden;
@@ -364,7 +364,7 @@ body {
 
 .preview__link--active {
   background-color: #adb5bd;
-  height: 12rem;
+  height: 10rem;
 }
 
 .preview__fig {
@@ -494,6 +494,7 @@ body {
 
 .recipe__fig {
   transform-origin: top;
+  background-size: cover;
   height: 35rem;
   position: relative;
 }
