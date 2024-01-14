@@ -1,5 +1,4 @@
 const recipeContainer = document.querySelector(".recipe");
-console.log(recipeContainer);
 const timeout = function(s) {
     return new Promise(function(_, reject) {
         setTimeout(function() {
@@ -80,31 +79,22 @@ const showRecipe = async function() {
   <div class="recipe__ingredients">
     <h2 class="heading--2">Recipe Ingredients</h2>
     <ul class="recipe__ingredient-list">
-    ${recipe.ingredients}
+    ${recipe.ingredients.map((ing)=>{
+            return `
       <li class="recipe__ingredient">
         <svg class="recipe__icon">
           <use href="src/img/icons.svg#icon-check"></use>
         </svg>
-        <div class="recipe__quantity">1000</div>
+        <div class="recipe__quantity">${ing.quantity}</div>
         <div class="recipe__description">
-          <span class="recipe__unit">g</span>
-          pasta
+          <span class="recipe__unit">${ing.unit}</span>
+          ${ing.description}
         </div>
       </li>
-
-      <li class="recipe__ingredient">
-        <svg class="recipe__icon">
-          <use href="src/img/icons.svg#icon-check"></use>
-        </svg>
-        <div class="recipe__quantity">0.5</div>
-        <div class="recipe__description">
-          <span class="recipe__unit">cup</span>
-          ricotta cheese
-        </div>
-      </li>
-    </ul>
-  </div>
-
+      `;
+        }).join("")}
+      </div>
+      
   <div class="recipe__directions">
     <h2 class="heading--2">How to Cook it</h2>
     <p class="recipe__directions-text">
