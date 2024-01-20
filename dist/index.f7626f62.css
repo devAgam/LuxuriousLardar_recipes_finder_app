@@ -29,7 +29,7 @@ body {
                  "list recipe" minmax(100rem, auto)
                  / 1fr 2fr;
   max-width: 140rem;
-  min-height: 130rem;
+  min-height: 110rem;
   margin: 4vw auto;
   display: grid;
   overflow: hidden;
