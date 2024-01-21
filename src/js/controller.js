@@ -21,6 +21,9 @@ const controlRecipe = async function () {
 
     recipeView.renderSpinner();
 
+    // Update results view to mark selected search result
+    resultsView.update(model.getSearchResultsPage());
+
     // Loading recipe
     await model.loadRecipe(id);
 
