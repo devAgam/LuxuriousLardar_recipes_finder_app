@@ -651,7 +651,11 @@ const controlAddBookmark = function() {
     // Render bookmarks
     (0, _bookmarkViewDefault.default).render(_model.state.bookmarks);
 };
+const controlBookmarks = function() {
+    (0, _bookmarkViewDefault.default).render(_model.state.bookmarks);
+};
 const init = function() {
+    (0, _bookmarkViewDefault.default).addHandlerRender(controlBookmarks);
     (0, _recipeViewDefault.default).addHandlerRender(controlRecipe);
     (0, _recipeViewDefault.default).addHandlerUpdateServings(controlServings);
     (0, _recipeViewDefault.default).addHandlerAddBookmark(controlAddBookmark);
@@ -2582,11 +2586,15 @@ const updateServings = function(newServings) {
     });
     state.recipe.servings = newServings;
 };
+const persistBookmarks = function() {
+    localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
+};
 const addBookmark = function(recipe) {
     // Add Bookmark
     state.bookmarks.push(recipe);
     // Mark current recipe as bookmark
     if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
+    persistBookmarks();
 };
 const deleteBookmark = function(id) {
     // Delete bookmark
@@ -2594,7 +2602,14 @@ const deleteBookmark = function(id) {
     state.bookmarks.splice(index, 1);
     // Mark current recipe as NOT bookmark
     if (id === state.recipe.id) state.recipe.bookmarked = false;
+    persistBookmarks();
 };
+const init = function() {
+    const storage = localStorage.getItem("bookmarks");
+    if (storage) state.bookmarks = JSON.parse(storage);
+};
+init();
+console.log(state.bookmarks);
 
 },{"regenerator-runtime":"dXNgZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./config.js":"k5Hzs","./helpers.js":"hGI1E"}],"k5Hzs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -3251,6 +3266,9 @@ class bookmarkView extends (0, _viewDefault.default) {
     _parentElement = document.querySelector(".bookmarks__list");
     _errorMessage = `No bookmark yet. Find a nice recipe and bookmark it!`;
     _message = "";
+    addHandlerRender(handler) {
+        window.addEventListener("load", handler);
+    }
     _generateMarkup() {
         return this._data.map(this._generateMarkupPreview).join("");
     }
