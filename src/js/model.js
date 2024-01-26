@@ -1,6 +1,6 @@
 import { async } from "regenerator-runtime";
-import { API_URL } from "./config.js";
-import { getJSON } from "./helpers.js";
+import { API_URL, KEY } from "./config.js";
+import { getJSON, sendJSON } from "./helpers.js";
 import { RES_PER_PAGE } from "./config.js";
 
 export const state = {
@@ -14,22 +14,29 @@ export const state = {
   bookmarks: [],
 };
 
+const createRecipeObject = function (data) {
+  const { recipe } = data.data;
+  return {
+    id: recipe.id,
+    title: recipe.title,
+    publisher: recipe.publisher,
+    sourceUrl: recipe.source_url,
+    image: recipe.image_url,
+    servings: recipe.servings,
+    cookingTime: recipe.cooking_time,
+    ingredients: recipe.ingredients,
+    // conditionally adding a new property to an object
+    ...(recipe.key && { key: recipe.key }),
+  };
+};
+
 export const loadRecipe = async function (id) {
   try {
     // loading Recipe
     const data = await getJSON(`${API_URL}${id}`);
+    state.recipe = createRecipeObject(data);
     // Changing the recipe data variable names`${API_URL}/${id}`
-    const { recipe } = data.data;
-    state.recipe = {
-      id: recipe.id,
-      title: recipe.title,
-      publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
-      image: recipe.image_url,
-      servings: recipe.servings,
-      cookingTime: recipe.cooking_time,
-      ingredients: recipe.ingredients,
-    };
+
     if (state.bookmarks.some((bookmark) => bookmark.id === id))
       state.recipe.bookmarked = true;
     else state.recipe.bookmarked = false;
@@ -79,6 +86,9 @@ const persistBookmarks = function () {
   localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
 };
 
+// Delete from local storage
+// localStorage.clear("bookmarks");
+
 export const addBookmark = function (recipe) {
   // Add Bookmark
   state.bookmarks.push(recipe);
@@ -105,4 +115,37 @@ const init = function () {
   if (storage) state.bookmarks = JSON.parse(storage);
 };
 init();
-console.log(state.bookmarks);
+
+export const uploadRecipe = async function (newRecipe) {
+  try {
+    console.log(Object.entries(newRecipe));
+    const ingredients = Object.entries(newRecipe)
+      .filter((entry) => entry[0].startsWith("ingredient") && entry[1] !== "")
+      .map((ing) => {
+        const ingArray = ing[1].replaceAll(" ", "").split(",");
+        console.log(ingArray);
+        if (ingArray.length !== 3) throw new Error("Wrong Ingredient format!");
+
+        const [quantity, unit, description] = ingArray;
+        return { quantity: quantity ? +quantity : "", unit, description };
+      });
+
+    const recipe = {
+      title: newRecipe.title,
+      source_url: newRecipe.sourceUrl,
+      image_url: newRecipe.image,
+      publisher: newRecipe.publisher,
+      cooking_time: +newRecipe.cookingTime,
+      servings: +newRecipe.servings,
+      ingredients,
+    };
+
+    console.log(recipe);
+    const data = await sendJSON(`${API_URL}?key=${KEY}`, recipe);
+    state.recipe = createRecipeObject(data);
+    addBookmark(state.recipe);
+    console.log(data);
+  } catch (err) {
+    throw err;
+  }
+};
