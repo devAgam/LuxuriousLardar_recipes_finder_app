@@ -33,7 +33,7 @@ const createRecipeObject = function (data) {
 export const loadRecipe = async function (id) {
   try {
     // loading Recipe
-    const data = await getJSON(`${API_URL}${id}`);
+    const data = await getJSON(`${API_URL}${id}?key=${KEY}`);
     state.recipe = createRecipeObject(data);
     // Changing the recipe data variable names`${API_URL}/${id}`
 
@@ -48,7 +48,7 @@ export const loadRecipe = async function (id) {
 export const loadSearchResults = async function (query) {
   try {
     state.search.query = query;
-    const data = await getJSON(`${API_URL}?search=${query}`);
+    const data = await getJSON(`${API_URL}?search=${query}&key=${KEY}`);
 
     state.search.results = data.data.recipes.map((rec) => {
       return {
@@ -56,6 +56,7 @@ export const loadSearchResults = async function (query) {
         title: rec.title,
         publisher: rec.publisher,
         image: rec.image_url,
+        ...(rec.key && { key: rec.key }),
       };
     });
   } catch (err) {
@@ -122,7 +123,7 @@ export const uploadRecipe = async function (newRecipe) {
     const ingredients = Object.entries(newRecipe)
       .filter((entry) => entry[0].startsWith("ingredient") && entry[1] !== "")
       .map((ing) => {
-        const ingArray = ing[1].replaceAll(" ", "").split(",");
+        const ingArray = ing[1].split(",").map((el) => el.trim());
         console.log(ingArray);
         if (ingArray.length !== 3) throw new Error("Wrong Ingredient format!");
 

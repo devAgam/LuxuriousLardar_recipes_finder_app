@@ -666,6 +666,10 @@ const controlAddRecipe = async function(newRecipe) {
         (0, _recipeViewDefault.default).render(_model.state.recipe);
         // Success message
         (0, _addRecipeViewDefault.default).renderMessage();
+        // Render bookmark view
+        (0, _bookmarkViewDefault.default).render(_model.state.bookmarks);
+        // Change ID in the URL
+        window.history.pushState(null, "", `#${_model.state.recipe.id}`);
         // Close form window
         setTimeout(function() {
             (0, _addRecipeViewDefault.default).toggleWindow();
@@ -2575,7 +2579,7 @@ const createRecipeObject = function(data) {
 const loadRecipe = async function(id) {
     try {
         // loading Recipe
-        const data = await (0, _helpersJs.getJSON)(`${(0, _configJs.API_URL)}${id}`);
+        const data = await (0, _helpersJs.getJSON)(`${(0, _configJs.API_URL)}${id}?key=${(0, _configJs.KEY)}`);
         state.recipe = createRecipeObject(data);
         // Changing the recipe data variable names`${API_URL}/${id}`
         if (state.bookmarks.some((bookmark)=>bookmark.id === id)) state.recipe.bookmarked = true;
@@ -2588,13 +2592,16 @@ const loadRecipe = async function(id) {
 const loadSearchResults = async function(query) {
     try {
         state.search.query = query;
-        const data = await (0, _helpersJs.getJSON)(`${(0, _configJs.API_URL)}?search=${query}`);
+        const data = await (0, _helpersJs.getJSON)(`${(0, _configJs.API_URL)}?search=${query}&key=${(0, _configJs.KEY)}`);
         state.search.results = data.data.recipes.map((rec)=>{
             return {
                 id: rec.id,
                 title: rec.title,
                 publisher: rec.publisher,
-                image: rec.image_url
+                image: rec.image_url,
+                ...rec.key && {
+                    key: rec.key
+                }
             };
         });
     } catch (err) {
@@ -2642,7 +2649,7 @@ const uploadRecipe = async function(newRecipe) {
     try {
         console.log(Object.entries(newRecipe));
         const ingredients = Object.entries(newRecipe).filter((entry)=>entry[0].startsWith("ingredient") && entry[1] !== "").map((ing)=>{
-            const ingArray = ing[1].replaceAll(" ", "").split(",");
+            const ingArray = ing[1].split(",").map((el)=>el.trim());
             console.log(ingArray);
             if (ingArray.length !== 3) throw new Error("Wrong Ingredient format!");
             const [quantity, unit, description] = ingArray;
@@ -2806,7 +2813,7 @@ class RecipeView extends (0, _viewDefault.default) {
         </div>
       </div>
   
-      <div class="recipe__user-generated">
+      <div class="recipe__user-generated ${this._data.key ? "" : "hidden"}">
         <svg>
           <use href="${0, _iconsSvgDefault.default}#icon-user"></use>
         </svg>
@@ -3272,7 +3279,11 @@ class ResultsView extends (0, _viewDefault.default) {
               <div class="preview__data">
                 <h4 class="preview__title">${result.title}</h4>
                 <p class="preview__publisher">${result.publisher}</p>
-                
+                <div class="preview__user-generated ${result.key ? "" : "hidden"}">
+                  <svg>
+                    <use href="${0, _iconsSvgDefault.default}#icon-user"></use>
+                  </svg>
+                </div>
               </div>
             </a>
           </li>
